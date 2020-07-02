@@ -15,8 +15,9 @@ A new Flutter plugin.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
-  s.dependency 'UMCAnalytics'
   s.dependency 'Flutter'
+  s.dependency 'UMengAnalytics'
+
   s.platform = :ios, '8.0'
 
 
