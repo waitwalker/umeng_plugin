@@ -30,4 +30,9 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
+
+    dependencies {
+        api 'com.umeng.sdk:common:latest.integration'
+        api 'com.umeng.sdk:analytics:latest.integration'
+    }
 }
