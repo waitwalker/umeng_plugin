@@ -1,9 +1,9 @@
 PODS:
   - Flutter (1.0.0)
+  - UMCCommon (7.1.1)
   - umeng_plugin (0.0.1):
     - Flutter
-    - UMengAnalytics
-  - UMengAnalytics (4.2.4)
+    - UMCCommon
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -11,7 +11,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - UMengAnalytics
+    - UMCCommon
 
 EXTERNAL SOURCES:
   Flutter:
@@ -21,9 +21,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  umeng_plugin: db9b13b82b460920571825d2802ce3494d7c7a7f
-  UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
+  UMCCommon: f455f92c125342e360d6ad9eafe484945351eeb5
+  umeng_plugin: 0f6b8e31d28b0e484f41a5deda89d88f056f9bf2
 
 PODFILE CHECKSUM: f32fb4e7c14f8b3ca19a369d7be425dd9241af27
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

@@ -1,6 +1,6 @@
 #import "UmengPlugin.h"
-#import <UMMobClick/MobClick.h>
-#import <UMMobClick/MobClickSocialAnalytics.h>
+#import <UMCommon/UMCommon.h>
+#import <UMCommon/MobClick.h>
 
 @implementation UmengPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -17,7 +17,7 @@
   } else if ([@"init" isEqualToString:call.method]) {
     [self init:call result:result];
   } else if ([@"logPageView" isEqualToString:call.method]) {
-    [MobClick logPageView:call.arguments[@"name"] seconds:[call.arguments[@"seconds"] intValue]];
+      [MobClick logPageView:call.arguments[@"name"] seconds:[call.arguments[@"seconds"] intValue]];
     result(nil);
   } else if ([@"beginPageView" isEqualToString:call.method]) {
     [MobClick beginLogPageView:call.arguments[@"name"]];
@@ -27,9 +27,9 @@
     result(nil);
   } else if ([@"logEvent" isEqualToString:call.method]) {
     if (call.arguments[@"label"] != [NSNull null])
-      [MobClick event:call.arguments[@"name"] label:call.arguments[@"label"]];
+      [MobClick beginEvent:call.arguments[@"name"] label:call.arguments[@"label"]];
     else
-      [MobClick event:call.arguments[@"name"]];
+      [MobClick beginEvent:call.arguments[@"name"]];
     result(nil);
   } else if ([@"reportError" isEqualToString:call.method]) {
     result(nil);
@@ -39,28 +39,17 @@
 }
 
 - (void)init:(FlutterMethodCall*)call result:(FlutterResult)result {
-  UMConfigInstance.appKey = call.arguments[@"key"];
-  // UMConfigInstance.secret = call.arguments[@"secret"];
+    
+    NSString *appKey = call.arguments[@"key"];
+    // UMConfigInstance.secret = call.arguments[@"secret"];
 
-  NSString* channel = call.arguments[@"channel"];
-  if (channel) UMConfigInstance.channelId = channel;
-
-  NSNumber* policy = call.arguments[@"policy"];
-  if (policy) UMConfigInstance.eSType = [policy intValue];
-
-  NSNumber* reportCrash = call.arguments[@"reportCrash"];
-  if (reportCrash) UMConfigInstance.bCrashReportEnabled = [reportCrash boolValue];
-
-  [MobClick startWithConfigure:UMConfigInstance];
-
-  NSNumber* logEnable = call.arguments[@"logEnable"];
-  if (logEnable) [MobClick setLogEnabled:[logEnable boolValue]];
-
-  NSNumber* encrypt = call.arguments[@"encrypt"];
-  if (encrypt) [MobClick setEncryptEnabled:[encrypt boolValue]];
-
-  NSNumber* interval = call.arguments[@"interval"];
-  if (interval) [MobClick setLogSendInterval:[interval doubleValue]];
+    NSString* channel = call.arguments[@"channel"];
+    if (channel == nil || channel.length == 0) {
+        channel = @"App Store";
+    }
+    
+    // 初始化
+    [UMConfigure initWithAppkey:appKey channel:channel];
 }
 
 @end
