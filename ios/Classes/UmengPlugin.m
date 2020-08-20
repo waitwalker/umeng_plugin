@@ -15,7 +15,18 @@
   if ([@"getPlatformVersion" isEqualToString:call.method]) {
     result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
   } else if ([@"init" isEqualToString:call.method]) {
-    [self init:call result:result];
+    NSString *appKey = call.arguments[@"key"];
+    // UMConfigInstance.secret = call.arguments[@"secret"];
+
+    NSString* channel = call.arguments[@"channel"];
+    if (channel == nil || channel.length == 0) {
+        channel = @"App Store";
+    }
+    
+    // 初始化
+    [UMConfigure initWithAppkey:appKey channel:channel];
+      
+      result(@"App store");
   } else if ([@"logPageView" isEqualToString:call.method]) {
       [MobClick logPageView:call.arguments[@"name"] seconds:[call.arguments[@"seconds"] intValue]];
     result(nil);
