@@ -54,10 +54,7 @@
     NSString *appKey = call.arguments[@"key"];
     // UMConfigInstance.secret = call.arguments[@"secret"];
 
-    NSString* channel = call.arguments[@"channel"];
-    if (channel == nil || channel.length == 0) {
-        channel = @"App Store";
-    }
+    NSString* channel =  @"App Store";
     
     // 初始化
     [UMConfigure initWithAppkey:appKey channel:channel];
