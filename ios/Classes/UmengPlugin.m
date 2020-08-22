@@ -14,28 +14,14 @@
   if ([@"getPlatformVersion" isEqualToString:call.method]) {
     result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
   } else if ([@"init" isEqualToString:call.method]) {
-    //NSString *appKey = call.arguments[@"key"];
-
-    //NSString* channel =  @"App Store";
-    
-    // 初始化
-    //[UMConfigure initWithAppkey:appKey channel:channel];
-      
-      result(@"App store");
+     result(@"App store");
   } else if ([@"logPageView" isEqualToString:call.method]) {
-      //[MobClick logPageView:call.arguments[@"name"] seconds:[call.arguments[@"seconds"] intValue]];
     result(nil);
   } else if ([@"beginPageView" isEqualToString:call.method]) {
-    //[MobClick beginLogPageView:call.arguments[@"name"]];
     result(nil);
   } else if ([@"endPageView" isEqualToString:call.method]) {
-    //[MobClick endLogPageView:call.arguments[@"name"]];
     result(nil);
   } else if ([@"logEvent" isEqualToString:call.method]) {
-    if (call.arguments[@"label"] != [NSNull null])
-      //[MobClick beginEvent:call.arguments[@"name"] label:call.arguments[@"label"]];
-    else
-      //[MobClick beginEvent:call.arguments[@"name"]];
     result(nil);
   } else if ([@"reportError" isEqualToString:call.method]) {
     result(nil);
