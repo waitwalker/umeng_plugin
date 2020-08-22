@@ -1,6 +1,5 @@
 #import "UmengPlugin.h"
-#import <UMCommon/UMCommon.h>
-#import <UMCommon/MobClick.h>
+
 
 @implementation UmengPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -20,40 +19,29 @@
     NSString* channel =  @"App Store";
     
     // 初始化
-    [UMConfigure initWithAppkey:appKey channel:channel];
+    //[UMConfigure initWithAppkey:appKey channel:channel];
       
       result(@"App store");
   } else if ([@"logPageView" isEqualToString:call.method]) {
-      [MobClick logPageView:call.arguments[@"name"] seconds:[call.arguments[@"seconds"] intValue]];
+      //[MobClick logPageView:call.arguments[@"name"] seconds:[call.arguments[@"seconds"] intValue]];
     result(nil);
   } else if ([@"beginPageView" isEqualToString:call.method]) {
-    [MobClick beginLogPageView:call.arguments[@"name"]];
+    //[MobClick beginLogPageView:call.arguments[@"name"]];
     result(nil);
   } else if ([@"endPageView" isEqualToString:call.method]) {
-    [MobClick endLogPageView:call.arguments[@"name"]];
+    //[MobClick endLogPageView:call.arguments[@"name"]];
     result(nil);
   } else if ([@"logEvent" isEqualToString:call.method]) {
     if (call.arguments[@"label"] != [NSNull null])
-      [MobClick beginEvent:call.arguments[@"name"] label:call.arguments[@"label"]];
+      //[MobClick beginEvent:call.arguments[@"name"] label:call.arguments[@"label"]];
     else
-      [MobClick beginEvent:call.arguments[@"name"]];
+      //[MobClick beginEvent:call.arguments[@"name"]];
     result(nil);
   } else if ([@"reportError" isEqualToString:call.method]) {
     result(nil);
   } else {
     result(FlutterMethodNotImplemented);
   }
-}
-
-- (void)init:(FlutterMethodCall*)call result:(FlutterResult)result {
-    
-    NSString *appKey = call.arguments[@"key"];
-    // UMConfigInstance.secret = call.arguments[@"secret"];
-
-    NSString* channel =  @"App Store";
-    
-    // 初始化
-    [UMConfigure initWithAppkey:appKey channel:channel];
 }
 
 @end
