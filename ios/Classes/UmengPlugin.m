@@ -14,9 +14,9 @@
   if ([@"getPlatformVersion" isEqualToString:call.method]) {
     result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
   } else if ([@"init" isEqualToString:call.method]) {
-    NSString *appKey = call.arguments[@"key"];
+    //NSString *appKey = call.arguments[@"key"];
 
-    NSString* channel =  @"App Store";
+    //NSString* channel =  @"App Store";
     
     // 初始化
     //[UMConfigure initWithAppkey:appKey channel:channel];
