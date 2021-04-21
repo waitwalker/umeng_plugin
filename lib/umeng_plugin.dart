@@ -13,18 +13,18 @@ class UmengPlugin {
   static const MethodChannel _channel =
       const MethodChannel('umeng_plugin');
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
+  static Future<String?> get platformVersion async {
+    final String? version = await _channel.invokeMethod('getPlatformVersion');
     return version;
   }
 
   static Future<bool> init(String key,
-      {int policy,
-        bool reportCrash,
-        bool encrypt,
-        String channel,
-        double interval,
-        bool logEnable}) {
+      {int? policy,
+        bool? reportCrash,
+        bool? encrypt,
+        String? channel,
+        double? interval,
+        bool? logEnable}) {
     Map<String, dynamic> args = {"key": key};
 
     args["channel"] = channel;
@@ -40,24 +40,24 @@ class UmengPlugin {
   }
 
   // page view
-  static Future<Null> logPageView(String name, int seconds) {
-    _channel.invokeMethod("logPageView", {"name": name, "seconds": seconds});
+  static Future<dynamic> logPageView(String name, int seconds) {
+    return _channel.invokeMethod("logPageView", {"name": name, "seconds": seconds});
   }
 
-  static Future<Null> beginPageView(String name) {
-    _channel.invokeMethod("beginPageView", {"name": name});
+  static Future<dynamic> beginPageView(String name) {
+    return _channel.invokeMethod("beginPageView", {"name": name});
   }
 
-  static Future<Null> endPageView(String name) {
-    _channel.invokeMethod("endPageView", {"name": name});
+  static Future<dynamic> endPageView(String name) {
+    return _channel.invokeMethod("endPageView", {"name": name});
   }
 
   // event
-  static Future<Null> logEvent(String name, {String label}) {
-    _channel.invokeMethod("logEvent", {"name": name, "label": label});
+  static Future<dynamic> logEvent(String name, {String? label}) {
+    return _channel.invokeMethod("logEvent", {"name": name, "label": label});
   }
 
-  static Future<Null> reportError(String error) {
-    _channel.invokeMethod("reportError", {"error": error});
+  static Future<dynamic> reportError(String error) {
+    return _channel.invokeMethod("reportError", {"error": error});
   }
 }
